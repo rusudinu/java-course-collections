@@ -18,8 +18,9 @@ jobs:
           distribution: 'temurin'
       - name: Checkout code
         uses: actions/checkout@v4
-      - name: Primitives test
-        id: primitives-test
+
+      - name: LibraryManagementSystemTest
+        id: library-management-system-test
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: LibraryManagementSystemTest Test
@@ -27,8 +28,9 @@ jobs:
           command: mvn test -Dtest=LibraryManagementSystemTest
           timeout: 10
           max-score: 20
-      - name: Classes test
-        id: classes-test
+
+      - name: ShoppingListTest
+        id: shopping-list-test
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: ShoppingListTest Test
@@ -36,8 +38,8 @@ jobs:
           command: mvn test -Dtest=ShoppingListTest
           timeout: 10
           max-score: 20
-      - name: Classes test
-        id: classes-test
+      - name: StudentCourseRegistrationTest
+        id: student-course-registration-test
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: StudentCourseRegistrationTest Test
@@ -45,8 +47,9 @@ jobs:
           command: mvn test -Dtest=StudentCourseRegistrationTest
           timeout: 10
           max-score: 20
-      - name: Classes test
-        id: classes-test
+
+      - name: StudentGradesTrackerTest
+        id: student-grades-tracker-test
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: StudentGradesTrackerTest Test
@@ -54,8 +57,9 @@ jobs:
           command: mvn test -Dtest=StudentGradesTrackerTest
           timeout: 10
           max-score: 20
-      - name: Classes test
-        id: classes-test
+
+      - name: UniqueVisitorsTest
+        id: unique-visitors-test
         uses: classroom-resources/autograding-command-grader@v1
         with:
           test-name: UniqueVisitorsTest Test
@@ -63,10 +67,11 @@ jobs:
           command: mvn test -Dtest=UniqueVisitorsTest
           timeout: 10
           max-score: 20
+
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
         env:
           PRIMITIVES-TEST_RESULTS: "${{steps.primitives-test.outputs.result}}"
           CLASSES-TEST_RESULTS: "${{steps.classes-test.outputs.result}}"
         with:
-          runners: primitives-test,classes-test
+          runners: library-management-system-test,shopping-list-test,student-course-registration-test,student-grades-tracker-test,unique-visitors-test
