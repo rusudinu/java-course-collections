@@ -71,8 +71,11 @@ jobs:
       - name: Autograding Reporter
         uses: classroom-resources/autograding-grading-reporter@v1
         env:
-          PRIMITIVES-TEST_RESULTS: "${{ steps.primitives-test.outputs.result }}"
-          CLASSES-TEST_RESULTS: "${{ steps.classes-test.outputs.result }}"
+          LIBRARY-MANAGEMENT-SYSTEM-TEST_RESULTS: "${{ steps.library-management-system-test.outputs.result }}"
+          SHOPPING-LIST-TEST_RESULTS: "${{ steps.shopping-list-test.outputs.result }}"
+          STUDENT-COURSE-REGISTRATION-TEST_RESULTS: "${{ steps.student-course-registration-test.outputs.result }}"
+          STUDENT-GRADES-TRACKER-TEST_RESULTS: "${{ steps.student-grades-tracker-test.outputs.result }}"
+          UNIQUE-VISITORS-TEST_RESULTS: "${{ steps.unique-visitors-test.outputs.result }}"
         with:
-          runners: "library-management-system-test,shopping-list-test,student-course-registration-test,student-grades-tracker-test,unique-visitors-test"
+          runners: library-management-system-test,shopping-list-test,student-course-registration-test,student-grades-tracker-test,unique-visitors-test
 
